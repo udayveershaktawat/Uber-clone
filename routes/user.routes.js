@@ -13,7 +13,7 @@ router.post("/login",[
      body('email').isEmail().withMessage("invalid email"),
      body("password").isLength({min:5}).withMessage("password must be at least 5 character long")
     
-],)
+],userController.loginUser)
 
 
 module.exports = router;
