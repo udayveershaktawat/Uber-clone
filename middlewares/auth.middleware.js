@@ -8,8 +8,13 @@ exports.authUser = async (req, res, next) => {
     return res.status(401).json({ message: "unauthorized" });
   }
 
+  const isBlacklisted = await User.findOne({token:token}) 
+  if(isBlacklisted){
+    return res.status(401).json({message:"unauthorized"})
+  }
+
   try {
-    const decode = jwt.verify(token, process.env.JWT_SECRET);
+    const decode = jwt.verify(token, process.env.JWT_SECRET,{exporesIn:"24h"});
     const user = await User.findById(decode._id);
 
     req.user = user;
