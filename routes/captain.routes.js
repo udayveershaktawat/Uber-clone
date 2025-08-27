@@ -14,7 +14,14 @@ router.post("/register",[
     body("vehicle.plate").isLength({min:3}).withMessage('color must be at least 3 character'),
     body("vehicle.capacity").isLength({min:1}).withMessage('color must be at least 3 character'),
     body("vehicle.vehicleType").isIn(['car',"auto","motorcycle"]).withMessage('invalid type'),
-],captainController.registerCaptain)
+],captainController.registerCaptain);
+
+
+router.post("/login",[
+    body("email").isEmail().withMessage("invalid email"),
+    body("password").isLength({min:6}).withMessage('password must be at least 6 character'),
+    
+],captainController.loginCaptain)
 
 
 
