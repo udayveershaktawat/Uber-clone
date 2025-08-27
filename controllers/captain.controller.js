@@ -42,3 +42,50 @@ exports.registerCaptain = async(req,res,next)=>{
 
 
 }
+
+
+
+
+
+// login captain
+exports.loginCaptain = async(req,res)=>{
+    const errors = validationResult(req)
+    if(!errors.isEmpty()){
+        return res.status(400).json({errors:errors.array()});
+    }
+
+    const {email,password} = req.body;
+
+    const captain = await Captain.findOne({email}).select("+password")
+
+
+    if(!captain){
+        return res.status(401).json("invalid email or password")
+    }
+
+
+
+    const isMatch = await captain.comparePassword(password);
+
+
+
+    if(!isMatch){
+
+        return res.status(401).json({message:"invalid email or password"})
+    }
+
+
+
+    const token = await captian.generateAuthToken();
+
+
+    res.cookie("token",token)
+
+
+    res.status(200).json({token,captain})
+
+
+
+
+
+}
