@@ -1,77 +1,77 @@
-const Captain = require("../models/captain.model");
-const captainService = require("../services/captain.service");
-const { validationResult } = require("express-validator");
-const blaclistToken = require("../models/blacklistToken.model");
+// const Captain = require("../models/captain.model");
+// const captainService = require("../services/captain.service");
+// const { validationResult } = require("express-validator");
+// const blaclistToken = require("../models/blacklistToken.model");
 
-exports.registerCaptain = async (req, res, next) => {
-  const errors = validationResult(req);
-  if ((!errors, isEmpty())) {
-    return res.status(400).json({ errors: errors.array() });
-  }
+// exports.registerCaptain = async (req, res, next) => {
+//   const errors = validationResult(req);
+//   if ((!errors, isEmpty())) {
+//     return res.status(400).json({ errors: errors.array() });
+//   }
 
-  const { fullname, email, password, vehicle } = req.body;
+//   const { fullname, email, password, vehicle } = req.body;
 
-  const isCaptainAlreadyExist = await Captain.findOne({ email });
-  if (isCaptainAlreadyExist) {
-    return res.status(400).json({ message: "captain already exists" });
-  }
+//   const isCaptainAlreadyExist = await Captain.findOne({ email });
+//   if (isCaptainAlreadyExist) {
+//     return res.status(400).json({ message: "captain already exists" });
+//   }
 
-  const hashedPassword = await Captain.hashPassword(password);
+//   const hashedPassword = await Captain.hashPassword(password);
 
-  const captain = await captainService.createCaptain({
-    firstname: fullname.firstname,
-    lastname: fullname.lastname,
-    email,
-    password: hashedPassword,
-    color: vehicle.color,
-    color: vehicle.capacity,
-    color: vehicle.plate,
-    color: vehicle.vehicleType,
-  });
+//   const captain = await captainService.createCaptain({
+//     firstname: fullname.firstname,
+//     lastname: fullname.lastname,
+//     email,
+//     password: hashedPassword,
+//     color: vehicle.color,
+//     color: vehicle.capacity,
+//     color: vehicle.plate,
+//     color: vehicle.vehicleType,
+//   });
 
-  const token = await captain.generateAuthToken();
+//   const token = await captain.generateAuthToken();
 
-  return res.status(201).json({ token, captain });
-};
+//   return res.status(201).json({ token, captain });
+// };
 
-// login captain
-exports.loginCaptain = async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
+// // login captain
+// exports.loginCaptain = async (req, res) => {
+//   const errors = validationResult(req);
+//   if (!errors.isEmpty()) {
+//     return res.status(400).json({ errors: errors.array() });
+//   }
 
-  const { email, password } = req.body;
+//   const { email, password } = req.body;
 
-  const captain = await Captain.findOne({ email }).select("+password");
+//   const captain = await Captain.findOne({ email }).select("+password");
 
-  if (!captain) {
-    return res.status(401).json("invalid email or password");
-  }
+//   if (!captain) {
+//     return res.status(401).json("invalid email or password");
+//   }
 
-  const isMatch = await captain.comparePassword(password);
+//   const isMatch = await captain.comparePassword(password);
 
-  if (!isMatch) {
-    return res.status(401).json({ message: "invalid email or password" });
-  }
+//   if (!isMatch) {
+//     return res.status(401).json({ message: "invalid email or password" });
+//   }
 
-  const token = await captian.generateAuthToken();
+//   const token = await captian.generateAuthToken();
 
-  res.cookie("token", token);
+//   res.cookie("token", token);
 
-  res.status(200).json({ token, captain });
-};
+//   res.status(200).json({ token, captain });
+// };
 
-// get profile
-exports.getCaptainProfile = async (req, res, next) => {
-  res.status(200).json({ captain: req.captain });
-};
+// // get profile
+// exports.getCaptainProfile = async (req, res, next) => {
+//   res.status(200).json({ captain: req.captain });
+// };
 
-// logout captain
-exports.logoutCaptain = async (req, res, next) => {
-  const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
+// // logout captain
+// exports.logoutCaptain = async (req, res, next) => {
+//   const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
 
-  await blacklistToken.create({ token });
-  res.clearCookie("token");
-  res.status(200).json({ message: "loggout successfully" });
-};
+//   await blacklistToken.create({ token });
+//   res.clearCookie("token");
+//   res.status(200).json({ message: "loggout successfully" });
+// };
