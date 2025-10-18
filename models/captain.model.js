@@ -1,3 +1,27 @@
+const mongoose = require("mongoose");
+
+const captainSchema = new mongoose.Schema({
+    
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const mongoose = require("mongoose");
 // const bcrypt = require("bcrypt");
 // const jwt = require("jsonwebtoken");
