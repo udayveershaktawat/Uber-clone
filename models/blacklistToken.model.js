@@ -1,3 +1,15 @@
+const mongoose = require("mongoose");
+
+
+const blacklistTokenSchema = new mongoose.Schema({
+    
+})
+
+
+
+
+
+
 // const mongoose = require("mongoose");
 
 // const blacklistTokenSchema = new mongoose.Schema({
