@@ -4,4 +4,4 @@ const captainSchema = new mongoose.Schema({
 
 })
 
-module.exports = mongoose.model("Captain",captainSchema)
+module.exports = mongoose.model("Captain",captainSchema);
