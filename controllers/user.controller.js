@@ -33,3 +33,8 @@ module.exports.registerUser = async(req,res,next)=>{
 
 
 }
+
+
+module.exportsloginUser = async(req,res,next)=>{
+    
+}
