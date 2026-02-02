@@ -60,8 +60,17 @@ module.exports.loginUser = async(req,res,next)=>{
             return res.status(401).json({message:"invalid email & password"})
         }
 
+        const token = user.generateAuthToken();
+
+        return res.status(200).json({user,token})
+
     }
     catch(error){
+        console.log(error)
+        return res.status(500).json({
+            message:"error while login please try later",
+            success:false
+        })
 
     }
 }
