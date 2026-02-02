@@ -5,6 +5,9 @@ const cors = require("cors");
 const morgan = require("morgan")
 const app = express();
 const dbConnect = require("./db/db");
+const userRoutes = require("./routes/user.routes");
+
+
 dbConnect();
 
 
