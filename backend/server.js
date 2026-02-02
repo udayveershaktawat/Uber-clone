@@ -1,12 +1,12 @@
 const http = require("http");
-
- const app = require("./app")
-const PORT = process.env.PORT || 3000
-
- const server = http.createServer(app);
+const app = require("./app");
 
 
+const PORT = process.env.PORT || 3000;
 
- server.listen(PORT,()=>{
-    console.log(`serrver started at port number : ${PORT}`)
- })
+const server = http.createServer(app);
+
+
+server.listen(PORT,()=>{
+   console.log(`server started at port number ${PORT}`)
+})
