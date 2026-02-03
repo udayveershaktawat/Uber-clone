@@ -77,16 +77,10 @@ module.exports.loginUser = async(req,res,next)=>{
 
 // profile
 module.exports.getUserProfile = async(req,res,next)=>{
-    try{
+
         res.status(200).json(req.user)
        
         
-    }
-    catch(error){
-        console.log(error)
-        return res.status(500).json({
-            success:false,
-            message:"error while fatching profile"
-        })
-    }
+    
+  
 }
