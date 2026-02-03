@@ -21,6 +21,7 @@ router.post("/login",[
 
 // profile
 router.get("/profile",authMiddleware.authUser,userController.getUserProfile)
+// logout
 router.get("/logout",authMiddleware.authUser,userController.logoutUser)
 
 
