@@ -2,7 +2,7 @@ const userModel = require("../models/user.model");
 const userService = require("../services/user.service");
 const { validationResult } = require("express-validator");
 const blacklistTokenModel = require("../models/blacklistToken.model");
-const captainModel = require("../models/captain.model");
+// const captainModel = require("../models/captain.model");
 
 // register controller
 module.exports.registerUser = async (req, res, next) => {
@@ -15,10 +15,10 @@ module.exports.registerUser = async (req, res, next) => {
 
     const { fullname, email, password } = req.body;
 
-    const isCaptainAlreadyExist = await captainModel.findOne({email});
+    const isUserAlready = await userModel.findOne({email});
 
-    if(isCaptainAlreadyExist){
-      return res.status(400).json({message:"captain already exists"})
+    if(isUserAlready){
+      return res.status(400).json({message:"user already exists"})
     }
 
     
