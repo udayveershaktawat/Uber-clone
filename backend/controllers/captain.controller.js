@@ -49,6 +49,31 @@ module.exports.registerCaptain = async (req, res, next) => {
 // logincaptain
 module.exports.loginCaptain = async(req,res,next)=>{
     try{
+        const errors = validationResult(req);
+
+        if(!errors.isEmpty()){
+            return res.status(400).json({errors:errors.array()})
+        }
+
+        const {email,password} = req.body;
+
+        const captain = await captainModel.findOne({email}).select("+password");
+
+        if(!captain){
+            return res.status(400).json({message:"invalid email & password"})
+        }
+
+        const isMatch = await captain.comparePassword(password);
+
+        if(!isMatch){
+            return res.status(400).json({message:"invalid email & password "})
+        }
+
+        const token = captain.generateAuthToken();
+
+        res.cookie("token",token);
+
+        return res.status(200).json({token,captain})
 
     }catch(error){
         return res.status(500).json({
