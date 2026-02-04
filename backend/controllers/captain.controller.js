@@ -2,6 +2,8 @@ const captainModel = require("../models/captain.model");
 const captainService = require("../services/captain.service");
 const { validationResult } = require("express-validator");
 
+
+// register captain
 module.exports.registerCaptain = async (req, res, next) => {
   try {
     const errors = validationResult(req);
@@ -11,7 +13,7 @@ module.exports.registerCaptain = async (req, res, next) => {
     }
 
     const { fullname, email, password, vehicle } = req.body;
-    
+
     const isCaptainAlreadyExist = await captainModel.findOne({ email });
 
     if (isCaptainAlreadyExist) {
@@ -42,3 +44,16 @@ module.exports.registerCaptain = async (req, res, next) => {
     });
   }
 };
+
+
+// logincaptain
+module.exports.loginCaptain = async(req,res,next)=>{
+    try{
+
+    }catch(error){
+        return res.status(500).json({
+            message:"error while login captain",
+            success:false
+        })
+    }
+}
