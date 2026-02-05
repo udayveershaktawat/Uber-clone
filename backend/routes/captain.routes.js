@@ -25,7 +25,10 @@ router.post("/login",[
 ],captainController.loginCaptain)
 
 // profile captain
-router.get("/profile",authmiddleware.authCaptain,captainController.getCaptainProfile)
+router.get("/profile",authmiddleware.authCaptain,captainController.getCaptainProfile);
+
+// logout captain
+router.get("/logout",authmiddleware.authCaptain,captainController.logoutCaptain)
 
 
 
