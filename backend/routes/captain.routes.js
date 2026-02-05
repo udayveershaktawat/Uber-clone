@@ -3,6 +3,7 @@ const router = express.Router();
 const {body}= require("express-validator");
 
 const captainController = require("../controllers/captain.controller")
+const authmiddleware = require("../middlewares/auth.middleware")
 
 
 // register route
@@ -22,6 +23,9 @@ router.post("/login",[
     body("email").isEmail().withMessage("invalid email"),
     body("password").isLength({min:6}).withMessage("password must be at least 6 character long")
 ],captainController.loginCaptain)
+
+// profile captain
+router.get("/profile",authmiddleware.authCaptain,captainController.getCaptainProfile)
 
 
 

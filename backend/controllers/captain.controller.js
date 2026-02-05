@@ -82,3 +82,4 @@ module.exports.loginCaptain = async(req,res,next)=>{
         })
     }
 }
+// getProfileCaptain
