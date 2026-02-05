@@ -83,3 +83,6 @@ module.exports.loginCaptain = async(req,res,next)=>{
     }
 }
 // getProfileCaptain
+module.exports.getCaptainProfile = async(req,res,next)=>{
+  res.status(200).json({captain:req.captain})
+}
