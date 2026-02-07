@@ -4,10 +4,17 @@ import { Link } from "react-router-dom";
 const UserLogin = () => {
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
+  const [userData , setUserData] = useState({})
 
   const submitHandler=(e)=>{
     e.preventDefault();
-    console.log("hello")
+    setUserData({
+      email:email,
+      password:password
+    })
+    setEmail("")
+    setPassword("")
+    // console.log("hello")
 
   }
   return (
@@ -47,7 +54,7 @@ const UserLogin = () => {
        <p className="text-center"> New here? <Link to="/signup" className="text-blue-600">Create new Account</Link></p>
           </div>
           <div>
-            <button className="bg-[#10b461] text-white mb-7 px-4 rounded-lg w-full text-lg placeholder:text-base py-2 ">Sign in as Captain</button>
+            <Link to="/captain-login" className="bg-[#10b461] flex justify-center items-center text-white mb-5 px-4 rounded-lg w-full text-lg placeholder:text-base py-2 ">Sign in as Captain</Link>
           </div>
     </div>
   );
