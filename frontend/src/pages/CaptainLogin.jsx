@@ -51,10 +51,10 @@ const CaptainLogin = () => {
           />
         <button className="bg-[#111] text-white mb-3 px-4 rounded-lg w-full text-lg placeholder:text-base py-2 ">Login</button>
       </form>
-       <p className="text-center"> Join a fleet? <Link to="/signup" className="text-blue-600">Register as a Captain</Link></p>
+       <p className="text-center"> Join a fleet? <Link to="/captain-signup" className="text-blue-600">Register as a Captain</Link></p>
           </div>
           <div>
-            <Link to="/captain-login" className="bg-[#f3c164] flex justify-center items-center text-white mb-5 px-4 rounded-lg w-full text-lg placeholder:text-base py-2 ">Sign in as User</Link>
+            <Link to="/login" className="bg-[#f3c164] flex justify-center items-center text-white mb-5 px-4 rounded-lg w-full text-lg placeholder:text-base py-2 ">Sign in as User</Link>
           </div>
     </div>
   );
