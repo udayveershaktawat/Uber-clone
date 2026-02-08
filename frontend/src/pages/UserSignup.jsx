@@ -4,10 +4,24 @@ import { Link } from 'react-router-dom'
 const UserSignup = () => {
   const [email, setEmail] = uEeState("");
   const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("")
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("")
+  const [userData,setUserData] = useState({})
 
   const submitHandler = (e)=>{
     e.preventDefault()
+    setUserData({
+      fullname:{
+        firstName:firstName,
+        lastName:lastName
+      },
+      email:email,
+      password:password
+    })
+    setFirstName('')
+    setLastName("")
+    setEmail("")
+    setPassword("")
   }
   return (
     <div>
