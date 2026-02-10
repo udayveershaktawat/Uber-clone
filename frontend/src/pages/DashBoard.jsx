@@ -2,12 +2,14 @@ import React, { useRef, useState } from "react";
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap"
 import 'remixicon/fonts/remixicon.css'
+import LocationSearchPanel from "../components/LocationSearchPanel";
 
 const DashBoard = () => {
     const [pickup, setPickup] = useState('');
     const [destination,setDestination]=useState('');
     const [panelOpen,setPanelOpen]=useState(false);
     const panelRef = useRef(null)
+    const panelCloseRef = useRef(null)
 
 
 
@@ -20,11 +22,21 @@ const DashBoard = () => {
         if(panelOpen){
 
             gsap.to(panelRef.current,{
-                height:"70%"
+                height:"70%",
+                opacity:1,
+                padding:24
+            })
+            gsap.to(panelCloseRef.current,{
+                opacity:1
             })
         }else{
             gsap.to(panelRef.current,{
-                height:"0%"
+                height:"0%",
+                opacity:0,
+                padding:0
+            })
+            gsap.to(panelCloseRef.current,{
+                opacity:0
             })
         }
     },[panelOpen])
@@ -46,9 +58,9 @@ const DashBoard = () => {
       </div>
       <div className=" flex flex-col justify-end  absolute top-0  h-screen w-full">
         <div className="h-[30%] p-6 relative bg-white">
-            <h5 onClick={()=>{
+            <h5 ref={panelCloseRef} onClick={()=>{
                 setPanelOpen(false)
-            }} className="absolute top-6 text-2xl right-6"><i className="ri-arrow-down-wide-line"></i></h5>
+            }} className="absolute top-6 opacity-0 text-2xl right-6"><i className="ri-arrow-down-wide-line"></i></h5>
          
           <h4 className="text-2xl font-semibold">Find a trip</h4>
           <form onSubmit={(e)=>{
@@ -78,7 +90,9 @@ const DashBoard = () => {
             />
           </form>
         </div>
-        <div ref={panelRef} className=" bg-red-400 h-0"></div>
+        <div ref={panelRef} className=" bg-white opacity-0 h-0">
+            <LocationSearchPanel/>
+        </div>
       </div>
     </div>
   );
