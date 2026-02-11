@@ -59,6 +59,11 @@ const DashBoard = () => {
     },[vehiclePanel])
 
 
+    //  onClick={()=>{
+    //     setVehiclePanel(false)
+    //   }}
+
+
   return (
     <div className="h-screen relative overflow-hidden ">
       <img
@@ -66,7 +71,9 @@ const DashBoard = () => {
         src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png"
         alt=""
       />
-      <div className="h-screen w-screen">
+      <div
+     
+       className="h-screen w-screen">
         <img
           className="h-full w-full object-cover"
           src="https://maps.olakrutrim.com/images/features/routing.svg"
@@ -111,7 +118,12 @@ const DashBoard = () => {
             <LocationSearchPanel vehiclePanel={vehiclePanel} setVehiclePanel={setVehiclePanel} />
         </div>
       </div>
-      <div ref={vehiclePanelRef} className=" fixed w-full z-10 translate-y-full bottom-0 px-3 py-8 bg-white">
+      <div ref={vehiclePanelRef} className=" fixed w-full z-10 translate-y-full bottom-0 px-3 py-10 bg-white">
+       <h5 
+       onClick={()=>{
+        setVehiclePanel(false)
+       }}
+        className="p-1 text-center absolute w-[93%] top-0"> <i className="text-3xl text-gray-200 ri-arrow-down-wide-line"></i></h5>
         <h3 className="text-2xl font-semibold mb-5">Choose a vehicle</h3>
         <div className="flex active:border-2 border-black mb-2 rounded-xl w-full p-3 items-center  justify-between">
             <img  className='h-12' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTutqrpU7mZAsnEklifsm4OMwu5qL02rlV0bw&s" alt="" />
