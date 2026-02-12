@@ -4,6 +4,7 @@ import gsap from "gsap";
 import "remixicon/fonts/remixicon.css";
 import LocationSearchPanel from "../components/LocationSearchPanel";
 import VehiclePanel from "../components/VehiclePanel";
+import ComfirmRide from "../components/ComfirmRide";
 
 const DashBoard = () => {
   const [pickup, setPickup] = useState("");
@@ -11,8 +12,10 @@ const DashBoard = () => {
   const [panelOpen, setPanelOpen] = useState(false);
   const panelRef = useRef(null);
   const vehiclePanelRef = useRef(null);
+  const comfirmRidePanelRef = useRef(null);
   const panelCloseRef = useRef(null);
   const [vehiclePanel, setVehiclePanel] = useState(false);
+  const [comfirmRidePanel,setComfirmRidePanel] = useState(false)
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -56,6 +59,20 @@ const DashBoard = () => {
       }
     },
     [vehiclePanel],
+  );
+   useGSAP(
+    function () {
+      if (comfirmRidePanel) {
+        gsap.to(comfirmRidePanelRef.current, {
+          transform: "translateY(0)",
+        });
+      } else {
+        gsap.to(comfirmRidePanelRef.current, {
+          transform: "translateY(100%)",
+        });
+      }
+    },
+    [comfirmRidePanel],
   );
 
   //  onClick={()=>{
@@ -122,14 +139,21 @@ const DashBoard = () => {
           <LocationSearchPanel
             vehiclePanel={vehiclePanel}
             setVehiclePanel={setVehiclePanel}
+            setPanelOpen={setPanelOpen}
           />
         </div>
       </div>
       <div
         ref={vehiclePanelRef}
-        className=" fixed w-full z-10 translate-y-full bottom-0 px-3 py-10 bg-white"
+        className=" fixed w-full z-10 translate-y-full bottom-0 px-3 py-10 pt-12 bg-white"
       >
-       <VehiclePanel setVehiclePanel={setVehiclePanel}/>
+       <VehiclePanel setComfirmRidePanel={setComfirmRidePanel} setVehiclePanel={setVehiclePanel}/>
+      </div>
+       <div
+        ref={comfirmRidePanelRef}
+        className=" fixed w-full z-10 translate-y-full bottom-0 px-3 py-6 pt-12 bg-white"
+      >
+       <ComfirmRide setVehiclePanel={setVehiclePanel} setComfirmRidePanel={setComfirmRidePanel}/>
       </div>
     </div>
   );
