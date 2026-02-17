@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Link,  useNavigate } from 'react-router-dom';
 import axios from "axios"
-import UserContext from '../context/UserContext';
+import {UserDataContext} from '../context/UserContext';
 
 const UserSignup = () => {
   const [email, setEmail] = useState("");
@@ -13,7 +13,7 @@ const UserSignup = () => {
 
   const navigate = useNavigate();
 
-  const {user,setUser} = React.useContext(UserContext)
+  const {user,setUser} = React.useContext(UserDataContext)
 
 
 
@@ -21,8 +21,8 @@ const UserSignup = () => {
     e.preventDefault()
    const newUser = {
      fullname:{
-        firstName:firstName,
-        lastName:lastName
+        firstname:firstName,
+        lastname:lastName
       },
       email:email,
       password:password
@@ -33,7 +33,7 @@ const UserSignup = () => {
    if(response.status === 201){
     const data =data.response
     setUser(data.user)
-    navigate('/login')
+    navigate('dashboard')
    }
 
 
