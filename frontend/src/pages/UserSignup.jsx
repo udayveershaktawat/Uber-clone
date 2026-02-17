@@ -31,9 +31,9 @@ const UserSignup = () => {
    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`,newUser)
 
    if(response.status === 201){
-    const data =data.response
+    const data =response.data
     setUser(data.user)
-    navigate('dashboard')
+    navigate('/dashboard')
    }
 
 
