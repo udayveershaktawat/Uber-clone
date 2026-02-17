@@ -13,12 +13,22 @@ const UserLogin = () => {
 
   const navigate = useNavigate();
 
-  const submitHandler=(e)=>{
+  const submitHandler= async(e)=>{
     e.preventDefault();
     const userData = {
       email:email,
       password:password
     }
+
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`,userData);
+
+    if(response.status === 200){
+      const data = response.data
+      setUser(data.user)
+      navigate("/dashboard")
+    }
+
+
     setEmail("")
     setPassword("")
     // console.log("hello")
