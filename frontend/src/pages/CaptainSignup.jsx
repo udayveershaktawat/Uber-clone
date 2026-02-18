@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { CaptainDataContext } from "../context/CaptainContext";
 
 const CaptainSignup = () => {
   const [email, setEmail] = useState("");
@@ -7,6 +8,12 @@ const CaptainSignup = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userData, setUserData] = useState({});
+  const [vehicleColor,setVehicleColor] = useState('')
+  const [vehiclePlate,setVehiclePlate]=useState('');
+  const [vehicleCapacity,setVehicleCapacity] = useState("")
+  const [vehicleType,setVehicleType]= useState("")
+
+  const {captain,setCaptain} = React.useContext(CaptainDataContext)
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -88,9 +95,64 @@ const CaptainSignup = () => {
               type="password"
               placeholder="password"
             />
+              <h3 className="text-lg font-medium mb-2">Vehicle Information</h3>
+                <div className="flex gap-4 mb-7">
+              <input
+                required
+                className="bg-[#eeeeee] w-1/2 rounded-lg px-4 py-2 border  text-lg placeholder:text-base"
+                type="text"
+                placeholder="Vehicle Color"
+                value={vehicleColor}
+                onChange={(e) => {
+                  setVehicleColor(e.target.value);
+                }}
+              />
+              <input
+                required
+                className="bg-[#eeeeee] w-1/2  rounded-lg px-4 py-2 border  text-lg placeholder:text-base"
+                type="text"
+                placeholder="Vehicle PLate"
+                value={vehiclePlate}
+                onChange={(e) => {
+                  setVehiclePlate(e.target.value);
+                }}
+              />
+            </div>
+            <div className="flex gap-4 mb-7">
+              <input
+                required
+                className="bg-[#eeeeee] w-1/2 rounded-lg px-4 py-2 border  text-lg placeholder:text-base"
+                type="text"
+                placeholder="Vehicle Capacity"
+                value={vehicleCapacity}
+                onChange={(e) => {
+                  setVehicleCapacity(e.target.value);
+                }}
+              />
+              <select
+
+                required
+                className="bg-[#eeeeee] w-1/2  rounded-lg px-4 py-2 border  text-lg placeholder:text-base"
+                type="text"
+                placeholder="Vehicle PLate"
+                value={vehicleType}
+                onChange={(e) => {
+                  setVehicleType(e.target.value);
+                }}
+                >
+                  <option value='' disabled>Select type</option>
+                  <option value='car'>Car</option>
+                  <option value="auto">Auto</option>
+                  <option value="moto">Moto</option>
+                </select>
+              
+            </div>
+
+
+
 
             <button className="bg-[#111] text-white font-semibold mb-3 rounded-lg px-4 py-2 w-full text-lg placeholder:text-base">
-              Create account
+              Create Captain Account
             </button>
           </form>
           <p className="text-center">
