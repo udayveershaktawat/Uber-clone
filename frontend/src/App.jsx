@@ -8,6 +8,7 @@ import CaptainLogin from './pages/CaptainLogin'
 import DashBoard from './pages/DashBoard'
 import Riding from './pages/Riding'
 import UserProtectWrapper from './pages/UserProtectWrapper'
+import UserLogout from './pages/UserLogout'
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         {/* "/dashboard after login wala PAGE hai" */}
 
         <Route path='/dashboard' element={<UserProtectWrapper><DashBoard/></UserProtectWrapper>}/>
+        <Route path='/user/logout' element={<UserProtectWrapper><UserLogout/></UserProtectWrapper>}/>
       </Routes>
     </div>
   )
