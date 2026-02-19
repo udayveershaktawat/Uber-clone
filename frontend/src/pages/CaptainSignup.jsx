@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CaptainDataContext } from "../context/CaptainContext";
+import axios from "axios";
 
 const CaptainSignup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [userData, setUserData] = useState({});
+  // const [userData, setUserData] = useState({});
   const [vehicleColor, setVehicleColor] = useState("");
   const [vehiclePlate, setVehiclePlate] = useState("");
   const [vehicleCapacity, setVehicleCapacity] = useState("");
@@ -34,7 +35,7 @@ const CaptainSignup = () => {
       }
       
     };
-    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/captians/register`,captainData);
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/captains/register`,captainData);
 
     if(response.status===201){
       const data=response.data
