@@ -29,7 +29,7 @@ const CaptainLogin = () => {
     }
     setEmail("")
     setPassword("")
-    // console.log("hello")
+    
 
   }
   return (
