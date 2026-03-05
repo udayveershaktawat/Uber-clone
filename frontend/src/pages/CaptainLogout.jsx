@@ -19,6 +19,8 @@ export const CaptainLogout = () => {
       }
     });
 
+    
+
   return <div>CaptainLogout</div>;
 };
 
