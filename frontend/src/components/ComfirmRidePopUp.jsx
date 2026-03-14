@@ -1,11 +1,6 @@
 import React from 'react'
 
-const RidePopUp = (props,idx) => {
-
-   
-
-
-
+const ComfirmRidePopUp = (props,idx) => {
   return (
     <div>
          <div>
@@ -20,7 +15,7 @@ const RidePopUp = (props,idx) => {
         {" "}
         <i className="text-3xl text-gray-200 ri-arrow-down-wide-line"></i>
       </h5>
-      <h3 className="text-2xl font-semibold mb-5">New Ride Available!</h3>
+      <h3 className="text-2xl font-semibold mb-5">Confirm this ride to Start</h3>
       <div className='flex items-center justify-between mt-3 p-3 bg-yellow-400 rounded-lg'>
         <div className='flex items-center gap-3 '>
             <img className='h-12 w-12 object-cover rounded-full' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRidMmtH7gBUknx4QrPOJppVeYXtfpBGqmacWG4TQlK6JWdPPFgv7sThx0Wwv_ibmq1r5dTK6IJe-BKhkERxC-_jswQCAjqsROYsYCIJ0g&s=10" alt="" />
@@ -48,17 +43,17 @@ const RidePopUp = (props,idx) => {
         </div>
       </div>
       <button onClick={()=>{
-        props.setComfirmRidePopupPanel(true)
        
-      }} className='w-full mt-5 bg-green-600 text-white font-semibold p-2 rounded-lg '>Accept</button>
+      }} className='w-full mt-5 bg-green-600 text-white font-semibold p-2 rounded-lg '>Confirm</button>
        <button onClick={()=>{
+         props.setComfirmRidePopupPanel(false)
          props.setRidePopupPanel(false)
       
-      }} className='w-full mt-1 bg-gray-200 text-gray-700 font-semibold p-2 rounded-lg '>Ignore</button>
+      }} className='w-full mt-1 bg-red-600 text-white font-semibold p-2 rounded-lg '>Cancel</button>
     </div>
       
     </div>
   )
 }
 
-export default RidePopUp;
+export default ComfirmRidePopUp
