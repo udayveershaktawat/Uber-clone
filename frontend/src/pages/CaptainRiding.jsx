@@ -26,19 +26,19 @@ const CaptainRiding = () => {
       </div>
       <div className="h-1/5 p-6 flex items-center justify-between rounded-t-xl relative bg-yellow-400">
        <h5
-        key={idx}
+      
         onClick={() => {
           
             
         }}
-        className="p-1 text-center absolute w-full top-0"
+        className="p-1 text-center absolute w-[88%] top-0"
       >
-        {" "}
+     
         
-        <i className="text-3xl text-gray-200 ri-arrow-down-wide-line"></i>
+        <i className="text-3xl text-gray-200 ri-arrow-up-wide-line"></i>
       </h5>
       <h4 className='text-xl font-semibold'>4 Km away</h4>
-      <button className='  bg-green-600 text-white font-semibold p-3 rounded-lg'>Complete Ride</button>
+      <button className='  bg-green-600 text-white font-semibold p-3 px-10 rounded-lg'>Complete Ride</button>
 
        
       </div>
