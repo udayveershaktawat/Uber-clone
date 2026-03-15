@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ComfirmRidePopUp = (props,idx) => {
   return (
@@ -42,14 +43,12 @@ const ComfirmRidePopUp = (props,idx) => {
             <div><h3 className='text-lg font-medium'>₹193.90</h3><p className='text-sm -mt-1 text-gray-600'>Cash</p></div>
         </div>
       </div>
-      <button onClick={()=>{
-       
-      }} className='w-full mt-5 bg-green-600 text-white font-semibold p-2 rounded-lg '>Confirm</button>
+      <Link to='/captain-riding' className='w-full mt-5 flex justify-center  bg-green-600 text-white font-semibold p-3 rounded-lg '>Confirm</Link>
        <button onClick={()=>{
          props.setComfirmRidePopupPanel(false)
          props.setRidePopupPanel(false)
       
-      }} className='w-full mt-1 bg-red-600 text-white font-semibold p-2 rounded-lg '>Cancel</button>
+      }} className='w-full mt-1 bg-red-600 text-white font-semibold p-3 rounded-lg '>Cancel</button>
     </div>
       
     </div>
