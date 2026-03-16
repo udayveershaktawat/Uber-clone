@@ -58,8 +58,11 @@ const ComfirmRidePopUp = (props, idx) => {
             </div>
           </div>
         </div>
-        <div className="mt-6">
-          <form>
+        <div className="mt-6 w-full">
+          <form onSubmit={(e)=>{
+            submitHandler(e)
+          }}>
+            <input  className="bg-[#eee] w-full px-6 py-4 font-mono rounded-lg mt-3 text-base" type="text" placeholder="Enter OTP" />
             <Link
               to="/captain-riding"
               className="w-full mt-5 flex justify-center  bg-green-600 text-white font-semibold p-3 rounded-lg "

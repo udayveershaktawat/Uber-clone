@@ -1,7 +1,29 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import FinishRide from '../components/FinishRide'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 const CaptainRiding = () => {
+
+    const [finishRidePanel,setFinishRidePanel] = useState(false)
+    const finishRidePanelRef = useRef(null)
+
+
+     useGSAP(
+    function () {
+      if (finishRidePanel) {
+        gsap.to(finishRidePanelRef.current, {
+          transform: "translateY(0)",
+        });
+      } else {
+        gsap.to(finishRidePanelRef.current, {
+          transform: "translateY(100%)",
+        });
+      }
+    },
+    [finishRidePanel],
+  );
   return (
     <div className="h-screen relative">
       <div className="fixed p-6 top-0 flex items-center justify-between w-screen">
@@ -41,6 +63,9 @@ const CaptainRiding = () => {
       <button className='  bg-green-600 text-white font-semibold p-3 px-10 rounded-lg'>Complete Ride</button>
 
        
+      </div>
+       <div ref={finishRidePanelRef} className=" fixed w-full z-10 translate-y-full  bottom-0 px-3 py-10 pt-12 bg-white">
+        <FinishRide  />
       </div>
      
     </div>
