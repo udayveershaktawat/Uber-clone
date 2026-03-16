@@ -46,7 +46,12 @@ const CaptainRiding = () => {
           alt=""
         />
       </div>
-      <div className="h-1/5 p-6 flex items-center justify-between rounded-t-xl relative bg-yellow-400">
+      <div
+        onClick={() => {
+          
+            setFinishRidePanel(true)
+        }}
+       className="h-1/5 p-6 flex items-center justify-between rounded-t-xl relative bg-yellow-400">
        <h5
       
         onClick={() => {
