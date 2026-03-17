@@ -8,7 +8,7 @@ const FinishRide = (props,idx) => {
         <h5
           key={idx}
           onClick={() => {
-            props.setRidePopupPanel(false);
+            props.setFinishRidePanel(false);
           }}
           className="p-1 text-center absolute w-[93%] top-0"
         >
@@ -59,26 +59,15 @@ const FinishRide = (props,idx) => {
           </div>
         </div>
         <div className="mt-6 w-full">
-          <form onSubmit={(e)=>{
-            submitHandler(e)
-          }}>
-            <input  className="bg-[#eee] w-full px-6 py-4 font-mono rounded-lg mt-3 text-base" type="text" placeholder="Enter OTP" />
+         
             <Link
               to="/captain-riding"
-              className="w-full mt-5 flex justify-center  bg-green-600 text-white font-semibold p-3 rounded-lg "
+              className="w-full mt-5 flex justify-center text-lg  bg-green-600 text-white font-semibold p-3 rounded-lg "
             >
-              Confirm
+              Complete Ride
             </Link>
-            <button
-              onClick={() => {
-                props.setComfirmRidePopupPanel(false);
-                props.setRidePopupPanel(false);
-              }}
-              className="w-full mt-1 bg-red-600 text-white font-semibold p-3 rounded-lg "
-            >
-              Cancel
-            </button>
-          </form>
+          
+        
         </div>
       </div>
     </div>

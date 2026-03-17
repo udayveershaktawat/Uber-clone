@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const ComfirmRidePopUp = (props, idx) => {
+
+  const [otp,setOtp] = useState("")
+
+  const submitHandler = (e)=>{
+    e.preventDefault()
+
+  }
+
+
+
   return (
     <div>
       <div>
@@ -16,7 +26,7 @@ const ComfirmRidePopUp = (props, idx) => {
           <i className="text-3xl text-gray-200 ri-arrow-down-wide-line"></i>
         </h5>
         <h3 className="text-2xl font-semibold mb-5">
-          Confirm this ride to Start
+          Finish this Ride
         </h3>
         <div className="flex items-center justify-between mt-3 p-3 bg-yellow-400 rounded-lg">
           <div className="flex items-center gap-3 ">
@@ -62,7 +72,13 @@ const ComfirmRidePopUp = (props, idx) => {
           <form onSubmit={(e)=>{
             submitHandler(e)
           }}>
-            <input  className="bg-[#eee] w-full px-6 py-4 font-mono rounded-lg mt-3 text-base" type="text" placeholder="Enter OTP" />
+            <input
+            value={otp}
+            onChange={(e)=>{
+              setOtp(e.target.value)
+            }}
+            
+            className="bg-[#eee] w-full px-6 py-4 font-mono rounded-lg mt-3 text-base" type="text" placeholder="Enter OTP" />
             <Link
               to="/captain-riding"
               className="w-full mt-5 flex justify-center  bg-green-600 text-white font-semibold p-3 rounded-lg "
