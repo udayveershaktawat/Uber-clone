@@ -81,7 +81,7 @@ const ComfirmRidePopUp = (props, idx) => {
             className="bg-[#eee] w-full px-6 py-4 font-mono rounded-lg mt-3 text-base" type="text" placeholder="Enter OTP" />
             <Link
               to="/captain-riding"
-              className="w-full mt-5 flex justify-center  bg-green-600 text-white font-semibold p-3 rounded-lg "
+              className="w-full mt-5 flex justify-center text-lg bg-green-600 text-white font-semibold p-3 rounded-lg "
             >
               Confirm
             </Link>
@@ -90,7 +90,7 @@ const ComfirmRidePopUp = (props, idx) => {
                 props.setComfirmRidePopupPanel(false);
                 props.setRidePopupPanel(false);
               }}
-              className="w-full mt-1 bg-red-600 text-white font-semibold p-3 rounded-lg "
+              className="w-full mt-1 bg-red-600 text-lg text-white font-semibold p-3 rounded-lg "
             >
               Cancel
             </button>
