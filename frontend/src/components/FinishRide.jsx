@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
 
-const FinishRide = (props,idx) => {
+const FinishRide = (props, idx) => {
   return (
     <div>
       <div>
@@ -59,19 +59,16 @@ const FinishRide = (props,idx) => {
           </div>
         </div>
         <div className="mt-6 w-full">
-         
-            <Link
-              to="/captain-home"
-              className="w-full mt-5 flex justify-center text-lg  bg-green-600 text-white font-semibold p-3 rounded-lg "
-            >
-              Finish Ride
-            </Link>
-          
-        
+          <Link
+            to="/captain-home"
+            className="w-full mt-5 flex justify-center text-lg  bg-green-600 text-white font-semibold p-3 rounded-lg "
+          >
+            Finish Ride
+          </Link>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FinishRide
+export default FinishRide;
